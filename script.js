@@ -1,5 +1,5 @@
 let currentBox = 1;
-let currentOption = 0;
+let currentOption = 1;
 let options = [];
 
 function parseCSV(csvText) {
