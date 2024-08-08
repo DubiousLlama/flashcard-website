@@ -17,6 +17,29 @@ function randomizeDataOrder(options) {
     return options
 }
 
+function flashBox(boxId) {
+    const box = document.getElementById(boxId);
+
+    if (boxId == 'box1') {
+        // Apply the lighter color as a CSS variable
+        box.style.setProperty('--box-color', '#86d3eb');
+        box.style.setProperty('--lighter-color', '#a2e5fa');
+    } else {
+        // Apply the lighter color as a CSS variable
+        box.style.setProperty('--box-color', '#94ebab');
+        box.style.setProperty('--lighter-color', '#b6fac8');
+    }
+
+
+    // Add the flash class
+    box.classList.add('flash');
+
+    // Remove the class after the animation duration (0.5s)
+    setTimeout(() => {
+        box.classList.remove('flash');
+    }, 500);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     fetch('options.csv')
         .then(response => response.text())
@@ -43,11 +66,11 @@ document.getElementById('nextButton').addEventListener('click', function () {
 
     if (currentBox === 1) {
         document.getElementById('box1').textContent = options[Math.floor(currentOption/2)][0];
-        console.log(options[Math.floor(currentOption/2)][0]);
+        flashBox('box1');
         currentBox = 2;
     } else {
         document.getElementById('box2').textContent = options[Math.floor(currentOption/2)][1];
-        console.log(options[Math.floor(currentOption/2)][1]);
+        flashBox('box2');
         currentBox = 1;
     }
 });

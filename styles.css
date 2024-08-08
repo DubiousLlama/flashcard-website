@@ -28,7 +28,6 @@ body, html {
     flex: 1;
     width: 80%;
     max-width: 600px;
-    background-color: #ffffff;
     color: #333333;
     display: flex;
     justify-content: center;
@@ -81,4 +80,15 @@ button {
 button:hover {
     background-color: #383838;
     transform: scale(1.05);
+}
+
+/* Flash animation */
+@keyframes flash {
+    0% { background-color: var(--box-color); }
+    50% { background-color: var(--lighter-color); } 
+    100% { background-color: var(--box-color); }
+}
+
+.flash {
+    animation: flash 0.1s ease-in-out;
 }
